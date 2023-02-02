@@ -11,6 +11,8 @@
 
 NAMESPACE_BEGIN(CryptoPP)
 
+#undef Verify
+
 template<> const byte EMSA2HashId<RIPEMD160>::id = 0x31;
 template<> const byte EMSA2HashId<RIPEMD128>::id = 0x32;
 template<> const byte EMSA2HashId<Whirlpool>::id = 0x37;

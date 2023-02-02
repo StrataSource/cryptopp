@@ -4,6 +4,8 @@
 #include "gzip.h"
 #include "argnames.h"
 
+#undef Verify
+
 NAMESPACE_BEGIN(CryptoPP)
 
 // Checks whether the character is valid for ISO/IEC 8859-1 as required by RFC 1952

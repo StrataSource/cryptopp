@@ -3,6 +3,7 @@
 #include "pch.h"
 #include "config.h"
 
+
 #if CRYPTOPP_MSC_VERSION
 # pragma warning(disable: 4127 4189 4459)
 #endif
@@ -26,6 +27,8 @@
 #include "smartptr.h"
 #include "stdcpp.h"
 #include "misc.h"
+
+#undef Verify
 
 NAMESPACE_BEGIN(CryptoPP)
 

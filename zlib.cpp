@@ -16,6 +16,8 @@ NAMESPACE_BEGIN(CryptoPP)
 static const byte DEFLATE_METHOD = 8;
 static const byte FDICT_FLAG = (1 << 5);
 
+#undef Verify
+
 // *************************************************************
 
 void ZlibCompressor::WritePrestreamHeader()

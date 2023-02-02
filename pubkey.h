@@ -58,6 +58,9 @@
 # define MAYBE_RETURN(x) CRYPTOPP_UNUSED(x)
 #endif
 
+#pragma push_macro( "Verify" )
+#undef Verify
+
 NAMESPACE_BEGIN(CryptoPP)
 
 /// \brief Provides range for plaintext and ciphertext lengths
@@ -2374,5 +2377,7 @@ NAMESPACE_END
 #if CRYPTOPP_MSC_VERSION
 # pragma warning(pop)
 #endif
+
+#pragma pop_macro( "Verify" )
 
 #endif

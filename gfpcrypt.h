@@ -26,6 +26,9 @@
 #include "hmac.h"
 #include "misc.h"
 
+#pragma push_macro( "Verify" )
+#undef Verify
+
 NAMESPACE_BEGIN(CryptoPP)
 
 CRYPTOPP_DLL_TEMPLATE_CLASS DL_GroupParameters<Integer>;
@@ -1028,6 +1031,8 @@ struct DLIES
 };
 
 NAMESPACE_END
+
+#pragma pop_macro( "Verify" )
 
 #if CRYPTOPP_MSC_VERSION
 # pragma warning(pop)

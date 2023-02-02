@@ -28,6 +28,9 @@
 
 #include <limits.h>
 
+#pragma push_macro( "Verify" )
+#undef Verify
+
 NAMESPACE_BEGIN(CryptoPP)
 
 /// \brief The LUC function.
@@ -334,5 +337,7 @@ NAMESPACE_END
 #if CRYPTOPP_MSC_VERSION
 # pragma warning(pop)
 #endif
+
+#pragma pop_macro( "Verify" )
 
 #endif

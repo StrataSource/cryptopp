@@ -9,6 +9,8 @@
 #include "algparam.h"
 #include "pkcspad.h"
 
+#undef Verify
+
 NAMESPACE_BEGIN(CryptoPP)
 
 #if defined(CRYPTOPP_DEBUG) && !defined(CRYPTOPP_DOXYGEN_PROCESSING)
