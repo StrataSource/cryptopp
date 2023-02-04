@@ -39,7 +39,10 @@ public:
 
 	pointer address(reference r) const {return (&r);}
 	const_pointer address(const_reference r) const {return (&r); }
+#pragma push_macro("new")
+#undef new
 	void construct(pointer p, const T& val) {new (p) T(val);}
+#pragma pop_macro("new")
 	void destroy(pointer p) {CRYPTOPP_UNUSED(p); p->~T();}
 
 	/// \brief Returns the maximum number of elements the allocator can provide
@@ -87,9 +90,11 @@ public:
 	/// \param args variadic arguments
 	/// \details This is a C++11 feature. It is available when CRYPTOPP_CXX11_VARIADIC_TEMPLATES
 	///  is defined. The define is controlled by compiler versions detected in config.h.
+#pragma push_macro("new")
+#undef new
     template<typename V, typename... Args>
     void construct(V* ptr, Args&&... args) {::new ((void*)ptr) V(std::forward<Args>(args)...);}
-
+#pragma pop_macro("new")
 	/// \brief Destroys an V constructed with variadic arguments
 	/// \tparam V the type to be forwarded
 	/// \details This is a C++11 feature. It is available when CRYPTOPP_CXX11_VARIADIC_TEMPLATES

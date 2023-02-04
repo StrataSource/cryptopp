@@ -393,10 +393,8 @@ public:
 		}
 	}
 
-#if defined(DEBUG_NEW) && (CRYPTOPP_MSC_VERSION >= 1300)
-# pragma push_macro("new")
-# undef new
-#endif
+#pragma push_macro("new")
+#undef new
 
 	void MoveInto(void *buffer) const
 	{
@@ -404,9 +402,7 @@ public:
 		CRYPTOPP_UNUSED(p);	// silence warning
 	}
 
-#if defined(DEBUG_NEW) && (CRYPTOPP_MSC_VERSION >= 1300)
-# pragma pop_macro("new")
-#endif
+#pragma pop_macro("new")
 
 protected:
 	T m_value;
