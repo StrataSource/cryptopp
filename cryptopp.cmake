@@ -96,6 +96,7 @@ set(
 	"${CRYPTOPP_DIR}/seed.cpp"
 	"${CRYPTOPP_DIR}/serpent.cpp"
 	"${CRYPTOPP_DIR}/sha.cpp"
+	"${CRYPTOPP_DIR}/sha3.cpp"
 	"${CRYPTOPP_DIR}/shacal2.cpp"
 	"${CRYPTOPP_DIR}/shark.cpp"
 	"${CRYPTOPP_DIR}/sharkbox.cpp"
@@ -120,6 +121,7 @@ set(
 	"${CRYPTOPP_DIR}/zinflate.cpp"
 	"${CRYPTOPP_DIR}/zlib.cpp"
 	"${CRYPTOPP_DIR}/sse_simd.cpp"
+	"${CRYPTOPP_DIR}/keccak_core.cpp"
 	"$<$<AND:$<NOT:${CLANG_CL}>,${IS_WINDOWS}>:${CRYPTOPP_DIR}/x64masm.asm>"
 	"$<$<AND:$<NOT:${CLANG_CL}>,${IS_WINDOWS}>:${CRYPTOPP_DIR}/x64dll.asm>"
 )
