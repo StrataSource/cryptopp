@@ -76,6 +76,7 @@ set(
 	"${CRYPTOPP_DIR}/pch.cpp"
 	"${CRYPTOPP_DIR}/pkcspad.cpp"
 	"${CRYPTOPP_DIR}/polynomi.cpp"
+	"${CRYPTOPP_DIR}/primetab.cpp"
 	"${CRYPTOPP_DIR}/pssr.cpp"
 	"${CRYPTOPP_DIR}/pubkey.cpp"
 	"${CRYPTOPP_DIR}/queue.cpp"
