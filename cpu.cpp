@@ -78,10 +78,9 @@ unsigned long int getauxval(unsigned long int) { return 0; }
 # include <setjmp.h>
 #endif
 
-// Required by Visual Studio 2008 and below and Clang on Windows.
-// Use it for all MSVC-compatible compilers.
-// XGETBV64 and CPUID64 are in x64dll.asm.
-#if defined(_M_X64) && defined(CRYPTOPP_MS_STYLE_INLINE_ASSEMBLY)
+// Visual Studio 2008 and below are missing _xgetbv and _cpuidex.
+// The 32-bit versions use inline ASM below. The 64-bit versions are in x64dll.asm.
+#if defined(CRYPTOPP_MSC_VERSION) && defined(_M_X64)
 extern "C" unsigned long long __fastcall XGETBV64(unsigned int);
 extern "C" unsigned long long __fastcall CPUID64(unsigned int, unsigned int, unsigned int*);
 #endif
@@ -393,15 +392,19 @@ word64 XGetBV(word32 num)
 #if defined(CRYPTOPP_DISABLE_ASM)
 	return 0;
 
-// Required by Visual Studio 2008 and below and Clang on Windows.
-// Use it for all MSVC-compatible compilers.
-#elif defined(_M_X64) && defined(CRYPTOPP_MS_STYLE_INLINE_ASSEMBLY)
+// Visual Studio 2010 SP1 and above, 32 and 64-bit
+// https://github.com/weidai11/cryptopp/issues/972
+#elif defined(CRYPTOPP_MSC_VERSION) && (_MSC_FULL_VER >= 160040219)
+
+	return _xgetbv(num);
+
+// Visual Studio 2008 and below, 64-bit
+#elif defined(CRYPTOPP_MSC_VERSION) && defined(_M_X64)
 
 	return XGETBV64(num);
 
-// Required by Visual Studio 2008 and below and Clang on Windows.
-// Use it for all MSVC-compatible compilers.
-#elif defined(_M_IX86) && defined(CRYPTOPP_MS_STYLE_INLINE_ASSEMBLY)
+// Visual Studio 2008 and below, 32-bit
+#elif defined(CRYPTOPP_MSC_VERSION) && defined(_M_IX86)
 
 	word32 a=0, d=0;
 	__asm {
@@ -457,16 +460,20 @@ bool CpuId(word32 func, word32 subfunc, word32 output[4])
 	output[0] = output[1] = output[2] = output[3] = 0;
 	return false;
 
-// Required by Visual Studio 2008 and below and Clang on Windows.
-// Use it for all MSVC-compatible compilers.
-#elif defined(_M_X64) && defined(CRYPTOPP_MS_STYLE_INLINE_ASSEMBLY)
+// Visual Studio 2010 and above, 32 and 64-bit
+#elif defined(CRYPTOPP_MSC_VERSION) && ((CRYPTOPP_MSC_VERSION >= 1600))
+
+	__cpuidex((int *)output, func, subfunc);
+	return true;
+
+// Visual Studio 2008 and below, 64-bit
+#elif defined(CRYPTOPP_MSC_VERSION) && defined(_M_X64)
 
 	CPUID64(func, subfunc, output);
 	return true;
 
-// Required by Visual Studio 2008 and below and Clang on Windows.
-// Use it for all MSVC-compatible compilers.
-#elif defined(_M_IX86) && defined(CRYPTOPP_MS_STYLE_INLINE_ASSEMBLY)
+// Visual Studio 2008 and below, 32-bit
+#elif (defined(CRYPTOPP_MSC_VERSION) && defined(_M_IX86)) || defined(__BORLANDC__)
 
 	__try
 	{
