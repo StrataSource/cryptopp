@@ -27,6 +27,7 @@ set(
 	"${CRYPTOPP_DIR}/cmac.cpp"
 	"${CRYPTOPP_DIR}/cpu.cpp"
 	"${CRYPTOPP_DIR}/crc.cpp"
+	"${CRYPTOPP_DIR}/crc_simd.cpp"
 	"${CRYPTOPP_DIR}/cryptlib.cpp"
 	"${CRYPTOPP_DIR}/default.cpp"
 	"${CRYPTOPP_DIR}/des.cpp"
@@ -46,8 +47,10 @@ set(
 	"${CRYPTOPP_DIR}/filters.cpp"
 	"${CRYPTOPP_DIR}/fips140.cpp"
 	"${CRYPTOPP_DIR}/gcm.cpp"
+	"${CRYPTOPP_DIR}/gcm_simd.cpp"
 	"${CRYPTOPP_DIR}/gf256.cpp"
 	"${CRYPTOPP_DIR}/gf2n.cpp"
+	"${CRYPTOPP_DIR}/gf2n_simd.cpp"
 	"${CRYPTOPP_DIR}/gf2_32.cpp"
 	"${CRYPTOPP_DIR}/gfpcrypt.cpp"
 	"${CRYPTOPP_DIR}/gost.cpp"
@@ -70,13 +73,13 @@ set(
 	"${CRYPTOPP_DIR}/mqueue.cpp"
 	"${CRYPTOPP_DIR}/mqv.cpp"
 	"${CRYPTOPP_DIR}/nbtheory.cpp"
+	"${CRYPTOPP_DIR}/neon_simd.cpp"
 	"${CRYPTOPP_DIR}/oaep.cpp"
 	"${CRYPTOPP_DIR}/osrng.cpp"
 	"${CRYPTOPP_DIR}/panama.cpp"
 	"${CRYPTOPP_DIR}/pch.cpp"
 	"${CRYPTOPP_DIR}/pkcspad.cpp"
 	"${CRYPTOPP_DIR}/polynomi.cpp"
-	"${CRYPTOPP_DIR}/primetab.cpp"
 	"${CRYPTOPP_DIR}/pssr.cpp"
 	"${CRYPTOPP_DIR}/pubkey.cpp"
 	"${CRYPTOPP_DIR}/queue.cpp"
@@ -87,6 +90,7 @@ set(
 	"${CRYPTOPP_DIR}/rc6.cpp"
 	"${CRYPTOPP_DIR}/rdtables.cpp"
 	"${CRYPTOPP_DIR}/rijndael.cpp"
+	"${CRYPTOPP_DIR}/rijndael_simd.cpp"
 	"${CRYPTOPP_DIR}/ripemd.cpp"
 	"${CRYPTOPP_DIR}/rng.cpp"
 	"${CRYPTOPP_DIR}/rsa.cpp"
@@ -97,6 +101,7 @@ set(
 	"${CRYPTOPP_DIR}/seed.cpp"
 	"${CRYPTOPP_DIR}/serpent.cpp"
 	"${CRYPTOPP_DIR}/sha.cpp"
+	"${CRYPTOPP_DIR}/sha_simd.cpp"
 	"${CRYPTOPP_DIR}/sha3.cpp"
 	"${CRYPTOPP_DIR}/shacal2.cpp"
 	"${CRYPTOPP_DIR}/shark.cpp"
@@ -170,6 +175,7 @@ target_compile_definitions(
 	CRYPTOPP_DISABLE_AVX
 	CRYPTOPP_DISABLE_AVX2
 	CRYPTOPP_DISABLE_AESNI
+	CRYPTOPP_DISABLE_ARM_AES
+	CRYPTOPP_DISABLE_ARM_SHA
 	CRYPTOPP_DISABLE_SSSE3
 )
-
