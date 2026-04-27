@@ -82,6 +82,7 @@ set(
 	"${CRYPTOPP_DIR}/polynomi.cpp"
 	"${CRYPTOPP_DIR}/pssr.cpp"
 	"${CRYPTOPP_DIR}/pubkey.cpp"
+	"${CRYPTOPP_DIR}/primetab.cpp"
 	"${CRYPTOPP_DIR}/queue.cpp"
 	"${CRYPTOPP_DIR}/rabin.cpp"
 	"${CRYPTOPP_DIR}/randpool.cpp"
